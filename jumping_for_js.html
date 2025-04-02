@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Create an animation project</title>
+		<link rel="stylesheet" href="../css/home.css">
+		
+		<style>
+			.center { margin: auto; height: 512px; width:640px; border: 3px solid black; padding: 10px;}
+			.controls { margin: auto; height: 64px; width:640px; padding: 10px;}
+			.square {height: 50px; width: 50px; background-color: #555;}
+		</style>
+		
+	</head>
+	
+	<body>
+	
+	<script src="../js/home.js"></script>
+	
+	<div class="topnav">
+		<a href="../index.html">Home</a>
+		<a href="tutorials.html">Tutorials</a>
+		<a href="showcase.html">Showcase</a>
+	</div> 
+	
+	<div class="center" id="square_env">
+		<div class="square" id="square"></div>
+	</div>
+	
+	<div>
+	<p>Left click your screen and inspect the console!</p>
+	</div>
+	<div class="controls">
+		<span style="display: inline;">
+			<input id="left" type="button" value="left" onclick="moveSquare('left');"/>
+			<input id="up" type="button" value="up" onclick="moveSquare('up');"/>
+			<input id="down" type="button" value="down" onclick="moveSquare('down');"/>
+			<input id="right" type="button" value="right" onclick="moveSquare('right');"/>
+		</span>
+	</div>
+	
+	</body>
+</html>
