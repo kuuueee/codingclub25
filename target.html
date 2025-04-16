@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Aiming at a target with a recursive javascript function</title>
+		<link rel="stylesheet" href="../css/maze.css">
+		<link rel="stylesheet" href="../css/home.css">
+
+		<style>
+			.center { margin: auto; width:532px; border: 3px solid black; padding: 10px;}
+			.controls { margin: auto; height: 64px; width:640px; padding: 10px;}
+			.square {height: 50px; width: 50px; background-color: #555;}
+			.grid-container { display: grid; grid-template-columns: repeat(10, 50px); grid-template-rows: repeat(10, 50px); gap: 3px;}
+			.grid-item {width: 50px; height: 50px;  background-color: ightblue; border: 1px solid #ddd;}
+			.grid-item-main {width: 50px; height: 50px;  background-color: green; border: 1px solid #ddd;}
+			.grid-item-target {width: 50px; height: 50px;  background-color: red; border: 1px solid #ddd;}
+
+
+		</style>
+	</head>
+	
+	<body>
+	<script src="../js/target.js"></script>
+	
+	<div class="topnav">
+		<a href="../index.html">Home</a>
+	</div>
+	<div>
+		<div class="center grid-container">
+			<!-- 10x10 Grid (100 Divs) with Unique IDs -->
+			<div id="0-0"class="grid-item"></div>
+			<div id="0-1"class="grid-item"></div>
+			<div id="0-2"class="grid-item"></div>
+			<div id="0-3"class="grid-item"></div>
+			<div id="0-4"class="grid-item"></div>
+			<div id="0-5"class="grid-item"></div>
+			<div id="0-6"class="grid-item"></div>
+			<div id="0-7"class="grid-item"></div>
+			<div id="0-8"class="grid-item"></div>
+			<div id="0-9"class="grid-item"></div>
+			<div id="1-0"class="grid-item"></div>
+			<div id="1-1"class="grid-item"></div>
+			<div id="1-2"class="grid-item"></div>
+			<div id="1-3"class="grid-item"></div>
+			<div id="1-4"class="grid-item"></div>
+			<div id="1-5"class="grid-item"></div>
+			<div id="1-6"class="grid-item"></div>
+			<div id="1-7"class="grid-item"></div>
+			<div id="1-8"class="grid-item"></div>
+			<div id="1-9"class="grid-item"></div>
+			<div id="2-0"class="grid-item"></div>
+			<div id="2-1"class="grid-item"></div>
+			<div id="2-2"class="grid-item"></div>
+			<div id="2-3"class="grid-item"></div>
+			<div id="2-4"class="grid-item"></div>
+			<div id="2-5"class="grid-item"></div>
+			<div id="2-6"class="grid-item"></div>
+			<div id="2-7"class="grid-item"></div>
+			<div id="2-8"class="grid-item"></div>
+			<div id="2-9"class="grid-item"></div>
+			<div id="3-0"class="grid-item"></div>
+			<div id="3-1"class="grid-item"></div>
+			<div id="3-2"class="grid-item"></div>
+			<div id="3-3"class="grid-item"></div>
+			<div id="3-4"class="grid-item"></div>
+			<div id="3-5"class="grid-item"></div>
+			<div id="3-6"class="grid-item"></div>
+			<div id="3-7"class="grid-item"></div>
+			<div id="3-8"class="grid-item"></div>
+			<div id="3-9"class="grid-item"></div>
+			<div id="4-0"class="grid-item"></div>
+			<div id="4-1"class="grid-item"></div>
+			<div id="4-2"class="grid-item"></div>
+			<div id="4-3"class="grid-item"></div>
+			<div id="4-4"class="grid-item"></div>
+			<div id="4-5"class="grid-item"></div>
+			<div id="4-6"class="grid-item"></div>
+			<div id="4-7"class="grid-item"></div>
+			<div id="4-8"class="grid-item"></div>
+			<div id="4-9"class="grid-item"></div>
+			<div id="5-0"class="grid-item"></div>
+			<div id="5-1"class="grid-item"></div>
+			<div id="5-2"class="grid-item"></div>
+			<div id="5-3"class="grid-item"></div>
+			<div id="5-4"class="grid-item"></div>
+			<div id="5-5"class="grid-item"></div>
+			<div id="5-6"class="grid-item"></div>
+			<div id="5-7"class="grid-item"></div>
+			<div id="5-8"class="grid-item"></div>
+			<div id="5-9"class="grid-item"></div>
+			<div id="6-0"class="grid-item"></div>
+			<div id="6-1"class="grid-item"></div>
+			<div id="6-2"class="grid-item"></div>
+			<div id="6-3"class="grid-item"></div>
+			<div id="6-4"class="grid-item"></div>
+			<div id="6-5"class="grid-item"></div>
+			<div id="6-6"class="grid-item"></div>
+			<div id="6-7"class="grid-item"></div>
+			<div id="6-8"class="grid-item"></div>
+			<div id="6-9"class="grid-item"></div>
+			<div id="7-0"class="grid-item"></div>
+			<div id="7-1"class="grid-item"></div>
+			<div id="7-2"class="grid-item"></div>
+			<div id="7-3"class="grid-item"></div>
+			<div id="7-4"class="grid-item"></div>
+			<div id="7-5"class="grid-item"></div>
+			<div id="7-6"class="grid-item"></div>
+			<div id="7-7"class="grid-item"></div>
+			<div id="7-8"class="grid-item"></div>
+			<div id="7-9"class="grid-item"></div>
+			<div id="8-0"class="grid-item"></div>
+			<div id="8-1"class="grid-item"></div>
+			<div id="8-2"class="grid-item"></div>
+			<div id="8-3"class="grid-item"></div>
+			<div id="8-4"class="grid-item"></div>
+			<div id="8-5"class="grid-item"></div>
+			<div id="8-6"class="grid-item"></div>
+			<div id="8-7"class="grid-item"></div>
+			<div id="8-8"class="grid-item"></div>
+			<div id="8-9"class="grid-item"></div>
+			<div id="9-0"class="grid-item"></div>
+			<div id="9-1"class="grid-item"></div>
+			<div id="9-2"class="grid-item"></div>
+			<div id="9-3"class="grid-item"></div>
+			<div id="9-4"class="grid-item"></div>
+			<div id="9-5"class="grid-item"></div>
+			<div id="9-6"class="grid-item"></div>
+			<div id="9-7"class="grid-item"></div>
+			<div id="9-8"class="grid-item"></div>
+			<div id="9-9"class="grid-item"></div>
+		</div>
+	</div>
+	<div class="controls">
+		<span style="display: inline;">
+			<input id="solve_maze" type="button" value="Target" onclick="aim_target();"/>
+			<input id="reset" type="button" value="Reset" onclick="reset_maze();"/>
+		</span>
+	</div>
+	<script>reset_maze();</script>
+	</body>
+</html>
