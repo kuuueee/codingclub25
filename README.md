@@ -1,10 +1,12 @@
-# April 2
+# April 16
 
 ## Please download the following:
 
-1. homepage-five.html
-2. jumping_for_js.html
-3. home.js
+1. homepage-six.html
+2. target.html
+3. target.js
 
-For the .html files, please store those in mr_c/html
-For the .js files, please store that in mr_c/js
+For homepage-six.html, please store those in mr_c/html
+
+For the .html files, please store those in {your_project}/html
+For the .js files, please store that in {your_project}/js
