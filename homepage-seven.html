@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Changing Shapes Programatically</title>
+		<link rel="stylesheet" href="../css/home.css">
+		
+		<style>
+		.square {
+		height: 50px;
+		width: 50px;
+		background-color: #555;
+		}
+		</style>
+		
+	</head>
+	
+	<body>
+	
+	<script src="../js/home.js"></script>
+	
+	<div class="topnav">
+		<a href="../index.html">Home</a>
+		<a href="tutorials.html">Tutorials</a>
+		<a href="showcase.html">Showcase</a>
+	</div> 
+	<pre>
+	A very step by step tutorial to make a shape change!
+			
+		** Name these files whatever you like - just be sure to reference them properly **
+	
+		1. Create a new .html file put this file in your /html folder
+		
+		2. Create a new .css file put this file in your /css folder
+
+		3. Create a new .js file put this file in your /js folder
+
+		4. Inside your .html file, link your files you just created - together.
+		
+			place this html to include a javascript file:
+			
+			
+			&lt;script src="<span style="color: #0000a0">../js/$replace_this_name.js</span>"&gt;  
+			
+			
+			Include this inside the body of your .html file.
+			
+		5. Here is the code to include a css file.
+		
+			
+			&lt;link rel="stylesheet" href="<span style="color: #0000a0">../css/$replace_this_name.css</span>"&gt;  
+
+			
+		6. In your .html page create a div element that will house your shape that has a recognizable identifier.
+		
+			Now remember your id, you will need to reference it in your javascript (js) file.
+			
+			&lt;div id="<span style="color: #f803fc">$my_div_vareiable_id</span>" class="square" onclick="<span style="color: #0000a0">change_shape();</span>"&gt;Delete me! &lt;/div&gt;
+			
+																									*notice the function name!*
+			
+		7. Now copy just the css of a bunch of different css shapes using <a href="https://www.w3schools.com/howto/howto_css_shapes.asp">html shapes</a>
+		
+			The css for the square looks like this:
+			
+				.square {
+				  height: 50px;
+				  width: 50px;
+				  background-color: #555;
+				}
+			
+			Copy your css definitions for shapes into your css file.
+			
+		8. Now get the name of the class of each of the shapes you just copied.
+			
+					for square, the class name is square
+					for circle, the class name is circle,
+					etc..
+					
+		9. You are going to reference every name you copied in a data structure called an array.
+				
+			Here is how it will work!
+			
+			["square", "circle", "oval", "addmore" , "using commas"]
+		
+		10. Now in your js file; declare a function named change_shape()
+		
+		    function change_shape()
+			{
+				//This is where your code for this function goes.
+			}
+		
+		11. Notice in your shape element that, onclick="change_shape();"
+			
+				This means that every time the shape is clicked, your function - and therefore your code is executed.
+		
+		12. In your function define a variable that you will always use -- your id;
+		
+				var id = "<span style="color: #f803fc">$my_div_vareiable_id</span>"
+		
+		13. The next variable that we will define will be the array mentioned earlier.
+		
+				var array = ["square", "circle", "oval", "addmore" , "using commas"];
+		
+		14. Next use your id to reference the shape element to get the current class.: 
+		
+					var current_class = document.getElementById(id).className;
+
+		
+		15. Get the position of the current class name in your array
+				
+				**Note arrays index start at 0, so in our array square is in position 0.**
+				
+					var current_position = array.indexOf(current_class);
+
+		
+		16. Now: here is where we need to figure out if we are at the end of the array or not.
+			
+			If we are at the end of the array, loop back to 0, else go to the next position.
+			
+					if (current_position &lt; array.length){
+						current_position++;
+					} else {
+						current_position = 0;
+					}
+					
+		17. Now we will clear the class of the shape, and replace it with the next element from our array.
+		
+			document.getElementById(id).className  = array[current_position];
+
+		
+		Next steps after you've create a clickable chanageble shape:
+		
+			- Create your own shapes that you define in the css file - don't forget to add them to your js array
+			- Choose a random shape to pick
+			- Make your shape look like it's rotating!
+
+		
+	<pre>
+
+	<div>
+
+	</body>
+</html>
